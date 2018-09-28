@@ -27,14 +27,14 @@ for ip=1:np
          %call RBFIN to do the interpolation and compute second derivatives
          [fi,dx,dy,ddx,ddy] = RBFIN(cloud_loc,unkno_loc)
          %calculate the residual at each point (applying the limiter)
-         if((abs(dx)>gradlim)|(abs(dy)>gradlim)|(abs(ddx)>gradlim)|(abs(ddy)>gradlim))
-             residual(ip)=gradlim;
+         %if((abs(dx)>gradlim)|(abs(dy)>gradlim)|(abs(ddx)>gradlim)|(abs(ddy)>gradlim))
+         %    residual(ip)=gradlim;
           if((ddx+ddy)>gradlim)
-%              residual(ip)=gradlim;
-               residual(ip)=0;
+              residual(ip)=gradlim;
+               %residual(ip)=0;
           elseif((ddx+ddy)<-gradlim)
-%              residual(ip)=-gradlim;
-               residual(ip)=0;
+              residual(ip)=-gradlim;
+               %residual(ip)=0;
           elseif((isnan(dx)==1)|(isnan(dy)==1)|(isnan(ddx)==1)|(isnan(ddy)==1))
              residual(ip)=0;
           else

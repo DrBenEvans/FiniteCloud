@@ -73,11 +73,11 @@ cloud=transpose(cloud);
 scatter(cloud(1,:),cloud(2,:))
 np=length(cloud)
 for ip=1:np
-    if((cloud(2,ip)>0.1)&(cloud(2,ip)<0.9)&(cloud(1,ip)>0.1)&(cloud(1,ip)<0.9))
-        unkno(ip)=(1/sinh(pi))*sin(pi*cloud(1,ip))*sinh(pi*cloud(2,ip))+sin(pi*cloud(2,ip));
-    else
+    %if((cloud(2,ip)>0.1)&(cloud(2,ip)<0.9)&(cloud(1,ip)>0.1)&(cloud(1,ip)<0.9))
+    %    unkno(ip)=(1/sinh(pi))*sin(pi*cloud(1,ip))*sinh(pi*cloud(2,ip))+sin(pi*cloud(2,ip));
+    %else
         unkno(ip)=(1/sinh(pi))*sin(pi*cloud(1,ip))*sinh(pi*cloud(2,ip));
-    end
+    %end
 end
 ptype(1:np)=3;
 for ip=1:(np-80)
