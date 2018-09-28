@@ -6,7 +6,7 @@ nd=length(cloud); %number of points in cloud
 xy_max=max(max(cloud));
 xy_min=min(min(cloud));
 r0=(xy_max-xy_min)/nd; %basis function radius
-stensize=5*r0;
+stensize=10*r0;
 %Compute the stencil for derivative calculations
 stencil(1,1)=cloud(1,1)-2*stensize;
 stencil(1,2)=cloud(2,1);
