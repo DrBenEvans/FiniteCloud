@@ -25,7 +25,7 @@ for ip=1:np
          %call rbfDerivative to do the interpolation and compute second derivatives
          %[fi,dx,dy,ddx,ddy]=rbfDerivative(cloud_loc,unkno_loc);
          %call RBFIN to do the interpolation and compute second derivatives
-         [fi,dx,dy,ddx,ddy] = RBFIN(cloud_loc,unkno_loc)
+         [fi,dx,dy,ddx,ddy] = RBFIN2(cloud_loc,unkno_loc)
          %calculate the residual at each point (applying the limiter)
          %if((abs(dx)>gradlim)|(abs(dy)>gradlim)|(abs(ddx)>gradlim)|(abs(ddy)>gradlim))
          %    residual(ip)=gradlim;
