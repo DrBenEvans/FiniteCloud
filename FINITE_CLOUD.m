@@ -13,10 +13,10 @@ nLevy=5; %number of Levy flight steps
 beta=1.5;  %Levy flight Beta parameter (set betweeen 1.0 and 2.0)
 bstep=0.1;  %step size away from boundary for points inserted from the boundary
 tolp=0.001; %the smallest distance allowed between points in the cloud
-rad=0.3;  %the 'influence radius' around each point
-gradlim=1;  %gradient limiter
-dt=0.1;  %timestep
-nstep=100; %number of timesteps
+rad=0.1;  %the 'influence radius' around each point
+gradlim=10000;  %gradient limiter
+dt=0.0001;  %timestep
+nstep=200; %number of timesteps
 mxpnt=1000; %maximum allowed number of points
 %% First read in the geometry and create the starting point master point cloud
 [cloud,np,nb,no,ptype,pinsert] = RGEOM(filename); 
@@ -73,11 +73,13 @@ cloud=transpose(cloud);
 scatter(cloud(1,:),cloud(2,:))
 np=length(cloud)
 for ip=1:np
-    %if((cloud(2,ip)>0.1)&(cloud(2,ip)<0.9)&(cloud(1,ip)>0.1)&(cloud(1,ip)<0.9))
-    %    unkno(ip)=(1/sinh(pi))*sin(pi*cloud(1,ip))*sinh(pi*cloud(2,ip))+sin(pi*cloud(2,ip));
-    %else
+    if((cloud(2,ip)>0.01)&(cloud(2,ip)<0.99)&(cloud(1,ip)>0.01)&(cloud(1,ip)<0.99))
+      %  unkno(ip)=(1/sinh(pi))*sin(pi*cloud(1,ip))*sinh(pi*cloud(2,ip))+sin(pi*cloud(2,ip));
+          unkno(ip) = 0.0;
+      else
         unkno(ip)=(1/sinh(pi))*sin(pi*cloud(1,ip))*sinh(pi*cloud(2,ip));
-    %end
+       % unkno(ip) = 0.0;
+    end
 end
 ptype(1:np)=3;
 for ip=1:(np-80)

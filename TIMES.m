@@ -4,7 +4,7 @@ for ip=nb+1:np
     if(ptype(ip)==3)  %i.e. a domain point
 %      dunk=-dt*residual(ip);
       dunk=dt*residual(ip);
-      unkno(ip)=unkno(ip)-dunk;
+      unkno(ip)=unkno(ip)+dunk;
     end
 end
 
